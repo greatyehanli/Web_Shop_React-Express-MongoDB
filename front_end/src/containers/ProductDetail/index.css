@@ -1,0 +1,107 @@
+.detail_page{
+    max-width: 1280px;
+    margin: 1rem auto;
+    display: flex;
+}
+
+.left_part_detail{
+    display: flex;
+    flex: 0.7;
+}
+
+.item_img_left{
+    margin: 1rem;
+    max-width: 250px;
+    /* img takes 25% of the left_part_detail div */
+    flex: 25%;
+}
+
+.detailed_description{
+    margin: 1rem;
+    /*detailed_description takes the rest 40% of left_part_detail div*/
+    flex: 45%;
+    /* 和content的高度一样 */
+    height: fit-content;
+    /* background-color: #fff; */
+    font-size: 1rem;
+}
+
+.product_name{
+    border-top: 1px solid black;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.detailed_description > p,
+.info_right > p{
+    padding: 1rem;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.rigth_price{
+    border-top: 1px solid black;
+}
+
+.detail_right_part{
+    display: flex;
+    flex-direction: column;
+    /* 左右一共占了1, 0.7+0.3 */
+    flex: 0.3;
+}
+
+.info_right{
+    /* detailed_description和这个对于, 都是1rem margin, 这样就对齐了, 都是保存p的div */
+    margin: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.info_right > p{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 0.75rem;
+}
+
+#add_to_cart_btn{
+    /* 占两格 */
+    grid-column: 1/-1;
+    padding: 0.3rem;
+    background-color: orange;
+    border: 1px solid red; 
+    border-radius: 15px;
+    /* 去除button默认的外框 */
+    outline: none;
+    text-decoration: none;
+    color: white;
+    
+    display: flex;
+    justify-content: center;
+}
+
+#add_to_cart_btn:hover{
+    background-color: #2F3640;
+    color: white;
+}
+
+#qty_select{
+    padding: 0.3rem;
+}
+
+/* 高于某个点触发是用max, 低于某个点触发用min */
+@media (max-width: 900px){
+    .detail_page{
+        flex-direction: column;
+    }
+    /* img和文字解释都在left_part_detail里面, 所以它也必须colomn布局才行 */
+    .left_part_detail{
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .item_img_left,
+    .left_part_detail{
+        flex: 1;
+    }
+}

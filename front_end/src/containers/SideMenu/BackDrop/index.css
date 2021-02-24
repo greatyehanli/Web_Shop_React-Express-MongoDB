@@ -1,0 +1,12 @@
+.backdrop{
+    width: 100%;
+    /* 100% viewport height */
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    /* doesn't move up or down as you scoll up and down, stay in the same place on the viewport */
+    /* 把这个舞台背景放在左上角(0,0) */
+    top: 0;
+    left: 0;
+    position: fixed;
+}

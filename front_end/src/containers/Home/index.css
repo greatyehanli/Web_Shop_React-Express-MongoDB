@@ -1,0 +1,45 @@
+/* 类似container in bootstrap */
+.home_page{
+    max-width: 85%;
+    margin: 1rem auto;
+}
+
+.home_page_title{
+    color: black;
+    font-size: 1.5rem;
+}
+
+.home_page_title:hover{
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.hot_products{
+    display: grid;
+    /* fr是说每个cell在row/colomn之中的占比, 所有item的fr加到一起按比例分配grid布局的width/height */
+    /* 4 items, repeat一行几个columns */
+    grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1300px){
+    .hot_products{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1000px){
+    .hot_products{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px){
+    .hot_products{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px){
+    .hot_products{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

@@ -1,0 +1,113 @@
+.side_menu{
+    width: 70%;
+    height: 100vh;
+    background-color: #F5F5F5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+
+    /* animation */
+    /* animation transform 的classes不能同时加载, 要不会互相overwrite */
+    /* 向左把sideMenu 100%移出屏幕 */
+    transform: translateX(-100%);
+    transition: all 0.3s ease-out;
+
+    /* flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideIn{
+    /* animation */
+    /* 向右边把sideMenu 100%移进屏幕, 0代表原先的位置 */
+    transform: translateX(0);
+    transition: all 0.3s ease-out;
+}
+
+.side_menu_links{
+    width: 100%;
+    height: 40%;
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    /* li style */
+    list-style: none;
+
+}
+
+.side_menu_links > li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.side_menu_links > li > a{
+    display: flex;
+    /* a 在屏幕上占了很长一行呢, 里面封装的MyNavLink => NavLink搁着叠杀人书呢, 
+    不可能是直接 text align直接生效, 需要把a里面的元素对齐到中间 */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    flex : 1; /* = flex: 1, 1, auto*/
+    padding: 1rem;
+    color: #9DD1FF;
+
+    /* 用来解决hover图标因为border加上去像素改变发生的位移 */
+    border: 2px solid rgba(0,0,0,0)
+
+}
+
+.side_menu_links > li > a:hover{
+    background-color: #E6F7FF;
+    border: 2px solid #189BFF;
+    border-radius: 15px;
+}
+
+.cart_link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 购物车链接向右移动28px和上面home对齐 */
+    margin-left: 28px;
+}
+
+.cart_link > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_number{
+    display: flex;
+    /* for 容器 */
+    justify-content: center;
+    align-items: center;
+
+    /* for 内容排布 */
+    text-align: center;
+
+    width: 20px;
+    height: 20px;
+    font-size: 1002px !important;
+
+    margin-left: 5px;
+
+    background-color: #F81D22;
+    border-radius: 50%;
+
+    color: white;
+}
+
+/* 不触发这个css的最小window是高于960px */
+@media (min-width: 960px){
+    .side_menu{
+        display: none;
+    }
+}

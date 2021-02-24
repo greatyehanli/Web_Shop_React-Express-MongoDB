@@ -1,0 +1,25 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "This is a senior design project",
+  "main": "server.js",
+  "author": "yehan",
+  "license": "MIT",
+  "scripts": {
+    "start": "node back_end/server.js",
+    "server": "nodemon back_end/server.js",
+    "client": "npm start --prefix front_end",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\" ",
+    "seedProduct": "node back_end/db_seeder.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}

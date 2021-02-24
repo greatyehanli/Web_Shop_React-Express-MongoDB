@@ -1,0 +1,21 @@
+*{
+    /* no margins or paddings for all element nodes in DOM/BOM */
+    margin: 0;
+    padding: 0;
+    /*  content-box => width和height对应的是content区盒子的大小
+        border-box: => width和height对应的是border区盒子的大小
+        */
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F0F0F0;
+}
+
+img{
+    /* take 100% of the outer element */
+    width: 100%;
+    /* show the img in whole no matter if the scaling will leave blanks on the page or not */
+    object-fit: contain;
+}

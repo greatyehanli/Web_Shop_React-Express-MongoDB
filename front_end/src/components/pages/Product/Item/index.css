@@ -1,0 +1,87 @@
+.itemCard{
+    width: 200px;
+    height: 300px;
+    padding: 1rem;
+    background-color: #F5F5F5;
+    box-shadow: 0 1px 2px;
+    margin: 10px auto;
+
+    /*  每个格子里面是flex布局 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item_info{
+    /* flex-colomn对于item信息的div里面的元素 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemCard > img{
+    height: 200px;
+    object-fit: contain;
+}
+
+.item_info > p{
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    overflow:hidden;
+    text-overflow:ellipsis; /* 加省略号 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* width: 250px; */
+}
+
+.item_price{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.item_name{
+    font-size: 1.2rem;
+    overflow: hidden;
+}
+
+.item_description{
+    font-size: 0.7rem;
+    height: 300px;
+}
+
+.btn_wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.item_view_btn{
+    display: block !important;
+    width: 70%;
+    text-decoration: none;
+    text-align: center;
+    color: darkcyan;
+    background-color: #e9e9e9;
+    padding: 5px 10px;
+    border: 1px solid #458FD2;
+    font-size: 1rem;
+}
+
+
+.item_view_btn:hover{
+    background-color: #555555;
+    color: white;
+}
+
+/* 随着宽度减小, 每行格子个数减少 把卡片变宽 */
+@media (max-width: 700px){
+    .itemCard{
+        width: 210px;
+    }
+}
+
+@media (max-width: 500px){
+    .itemCard{
+        width: 300px;
+    }
+}
