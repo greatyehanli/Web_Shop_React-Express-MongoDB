@@ -2,7 +2,7 @@ import * as constants from '../constants/cart'
 import axios from 'axios'
 
 export const saveToCart= (id, quantity)=>{
-
+ 
     console.log("Save_toCart id: ", id);
 
     //await axios promise response

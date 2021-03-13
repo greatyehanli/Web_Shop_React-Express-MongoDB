@@ -1,7 +1,6 @@
 const Product = require('../models/Product')
 
 //我们在controller里面只定义了一些得到db数据的函数
-
 const getAllProducts = async (req, res)=>{
     try {
         //find() 方法以非结构化的方式来显示所有文档, 默认参数是{}=查找所以返回文档

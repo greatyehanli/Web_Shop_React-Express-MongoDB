@@ -25,7 +25,7 @@ class CartItem extends Component {
 
                 <button className='delete_item_in_cart_btn' onClick={()=>this.props.deleteFromCart(id)}><i className='fas fa-trash'></i></button>
 
-            </div>
+            </div> 
         )
     }
 }

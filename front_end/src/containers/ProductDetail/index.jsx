@@ -60,9 +60,11 @@ class ProductDetail extends Component {
 
                                 <p>
                                     <strong>Stock: </strong> 
-                                    {numberInStock>0 ? 
+                                    {
+                                     numberInStock>0 ? 
                                      <span style={{color: "green"}}>In Stock</span> :
-                                     <span style={{color: 'red'}}>Out of Stock</span>}
+                                     <span style={{color: 'red'}}>Out of Stock</span>
+                                    }
                                 </p>
 
                                 <p>

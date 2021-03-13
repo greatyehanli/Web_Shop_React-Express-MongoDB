@@ -83,7 +83,7 @@
     text-align: center;
 
     /* others */
-    font-size: 13px;
+    font-size: 13px !important;
     background-color: #e22265;
 
     /* 父元素的width会自动适应子元素的width来进行增加或者减小 */

@@ -1,4 +1,4 @@
-const {createProxyMiddleware} = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 //此文件是脚手架自动运行的, 不能改名
 
@@ -17,13 +17,13 @@ const {createProxyMiddleware} = require('http-proxy-middleware')
  *  
  */
 
- /*
-         	changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000, 骗server说这个请求是你自己的域内发的
-         	changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:3000
-         	changeOrigin默认值为false，但我们一般将changeOrigin值设为true
- */
+/*
+             changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000, 骗server说这个请求是你自己的域内发的
+             changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:3000
+             changeOrigin默认值为false，但我们一般将changeOrigin值设为true
+*/
 
- module.exports = function(app){
+module.exports = function (app) {
 
     //前端的发请求的中间件, 也用app做应用代指
     //这严格意义上就是中间件帮忙转发request欺骗Ajax引擎说没跨域, 中间件代理
@@ -31,9 +31,9 @@ const {createProxyMiddleware} = require('http-proxy-middleware')
         createProxyMiddleware('/toBackendServer', {
             target: 'http://localhost:5001',
             changeOrigin: true,
-            pathRewrite: {'^/toBackendServer': ''}
+            pathRewrite: { '^/toBackendServer': '' }
         })
 
     )
 
- }
+}

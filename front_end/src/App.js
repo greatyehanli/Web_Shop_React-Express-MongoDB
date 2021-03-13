@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavBar from './containers/NavBar'
 import SideMenu from './containers/SideMenu'
+import './App.css'
 
 export default class App extends Component {
 

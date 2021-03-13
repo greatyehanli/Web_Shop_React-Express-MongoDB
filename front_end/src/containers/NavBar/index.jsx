@@ -14,6 +14,11 @@ import MyNavLink from '../../components/MyNavLink/index'
 import Home from '../Home'
 import Cart from '../Cart'
 import ProductDetail from '../ProductDetail'
+import Registration from '../../components/Registration/Registration'
+import Login from '../../components/Login/Login'
+import ResetPassword from '../../components/ResetPassword/ResetPassword'
+import ForgotPassword from '../../components/ForgotPassword/ForgotPassword'
+import UserPortal from '../../components/UserPortal/UserPortal'
 //css
 import './index.css'
 
@@ -46,6 +51,20 @@ class NavBar extends Component {
                         <li>
                             <MyNavLink to='/home' className='' state={{}}>Home</MyNavLink>
                         </li>
+
+                        <li>
+                            <MyNavLink to='/login' className='' state={{}}>Login</MyNavLink>
+                        </li>
+
+                        <li>
+                            <MyNavLink to='/signUp' className='' state={{}}>Sign Up</MyNavLink>
+                        </li>
+                
+                        <li>
+                            <MyNavLink to='/userPortal' className='' state={{}}>Profile</MyNavLink>
+                        </li>
+
+
                         {/* <li>
                             <MyNavLink to='' state={{}}>Product</MyNavLink>
                         </li> */}
@@ -71,6 +90,11 @@ class NavBar extends Component {
                 {/* mapping to state in child componet's props.location */}
                 <Switch>
                     <Route path='/home' component={Home}></Route>
+                    <Route path='/login' component={Login}></Route>
+                    <Route path='/signUp' component={Registration}></Route>
+                    <Route path='/forgotPassword' component={ForgotPassword}></Route>
+                    <Route path='/resetPassword/:resetToken' component={ResetPassword}></Route>
+                    <Route path='/userPortal' component={UserPortal}></Route>
                     <Route path='/product' component={ProductDetail}></Route>
                     <Route path='/cart' component={Cart}></Route>
                     {/* <Route path='/' component={Home}></Route> */}

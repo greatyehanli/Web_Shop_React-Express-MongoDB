@@ -5,7 +5,7 @@ import axios from 'axios'
 export const getHotProducts = ()=>{
     return async (dispatch)=>{
         //ajax req, await promise, awaitpromise的try-catch block
-        try{
+        try{ 
             //通知我们的store去该products的isLoading状态为true
             dispatch({
                 type: constants.GET_PRODUCTS_REQ

@@ -11,8 +11,11 @@ const connectDB = async() =>{
     try{
         console.log('MongoDB connected successfully!');
         await mongoose.connect(process.env.MONGO_URI, {
+            //mongoDB驱动程序
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useCreateIndex: true,
+            useUnifiedTopology: true,
+            useFindAndModify: true
         })
     }catch(err){
         console.log(err);

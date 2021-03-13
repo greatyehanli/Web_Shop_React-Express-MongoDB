@@ -6,7 +6,7 @@ export const getSpecificProductById = (id)=>{
     return async (dispatch)=>{
         //ajax req, await promise, awaitpromise的try-catch block
         try{
-            //通知我们的store去该products的isLoading状态为true
+            //通知我们的store去改products的isLoading状态为true
             dispatch({
                 type: constants.GET_PRODUCT_DETAIL_REQ
             })
@@ -16,7 +16,7 @@ export const getSpecificProductById = (id)=>{
                 url: `/toBackendServer/to/product/${id}`
             })
 
-            console.log('', response);
+            // console.log('', response);
 
             //如果没跳错就是success, 传data到state
             dispatch({

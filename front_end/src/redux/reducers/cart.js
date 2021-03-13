@@ -13,9 +13,9 @@ export default function CartReducer(preState=initState, action){
 
             if(doesItemExists){
                 return{
-                    // 目前只有一个itemArrInCart在里面, 我们以后可能加更多的properties,在这里先展开
+                    // 目前只有一个itemsInCart在里面, 我们以后可能加更多的properties,在这里先展开
                     ...preState,
-                    //cartItem里面存了当前item的Qauntity, 这里更新到数组里面的最新data包含了最新当前item的选择数量
+                    //cartItem里面存了当前item的Qauntity, 这里更新到数组里面的最新data包含了最新当前item的选择数量, overwrite preState里面的itemsInCart
                     itemsInCart: preState.itemsInCart.map(currentItem => {
                         //对匹配上的cartItem进行数据更新, 老的不变, 原路返回
                         return currentItem.id === data.id ? data : currentItem

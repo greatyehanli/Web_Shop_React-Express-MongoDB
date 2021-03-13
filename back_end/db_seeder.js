@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({path: './.env'})
 // const mongoose = require('mongoose')
 
 const productData = require('./data/productData')
@@ -29,10 +29,10 @@ const seedProductDB = async() =>{
         // await waitThreeSec()
         // console.log("Middle!!!!!!")
         await Product.insertMany(productData)
-        console.log("Seeding Product Succeeded!!!!!!")
+        // console.log("Seeding Product Succeeded!!!!!!")
         process.exit()
     }catch(err){
-        console.log("error occured during seeding", err);
+        // console.log("error occured during seeding", err);
         //1=err
         process.exit(1)
     }
