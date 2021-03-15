@@ -52,17 +52,23 @@ class NavBar extends Component {
                             <MyNavLink to='/home' className='' state={{}}>Home</MyNavLink>
                         </li>
 
-                        <li>
-                            <MyNavLink to='/login' className='' state={{}}>Login</MyNavLink>
-                        </li>
+                        {this.props.authState? '' :    
+                            <>       
+                                <li>
+                                    <MyNavLink to='/login' className='' state={{}}>Login</MyNavLink>
+                                </li>
 
-                        <li>
-                            <MyNavLink to='/signUp' className='' state={{}}>Sign Up</MyNavLink>
-                        </li>
+                                <li>
+                                    <MyNavLink to='/signUp' className='' state={{}}>Sign Up</MyNavLink>
+                                </li>
+                            </>
+                        }
                 
-                        <li>
-                            <MyNavLink to='/userPortal' className='' state={{}}>Profile</MyNavLink>
-                        </li>
+                        {this.props.authState?
+                            <li>
+                                <MyNavLink to='/userPortal' className='' state={{}}>Profile</MyNavLink>
+                            </li> : ''
+                        }
 
 
                         {/* <li>
@@ -110,10 +116,11 @@ class NavBar extends Component {
 export default connect(
     state => ({
         display: state.display,
-        cartState: state.cartState
+        cartState: state.cartState,
+        authState: state.authState
     }),
     {
-        toggleDisplay
+        toggleDisplay,
     }
 )(NavBar)
 

@@ -1,7 +1,14 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 
-export default class UserPortal extends Component {
+//redux
+import {connect} from 'react-redux'
+
+//redux action-creater
+import {setAuthStatus} from '../../redux/actions/authStatus'
+
+
+class UserPortal extends Component {
     state = {
         error: '',
         protectedData: ''        
@@ -34,6 +41,7 @@ export default class UserPortal extends Component {
 
     logOut = () =>{
         localStorage.removeItem('accessToken')
+        this.props.setAuthStatus(false)
         this.props.history.push('/login')
     }
 
@@ -42,8 +50,17 @@ export default class UserPortal extends Component {
         return (
             error?<span>{error}</span> : <>
                 <h1>{protectedData}</h1>
-                <button onClick={this.logOut}>Logout</button>
+                <a onClick={this.logOut}>Logout</a>
             </>
         )
     }
 }
+
+export default connect(
+    state =>({
+        authState: state.authState
+    }),
+    {
+        setAuthStatus
+    }
+)(UserPortal)

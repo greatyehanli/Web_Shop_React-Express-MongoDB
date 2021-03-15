@@ -5,10 +5,12 @@ import SideMenuReducer from './side_menu'
 import ProductsReducer from './products'
 import ProductReducer from './product'
 import CartReducer from './cart'
+import authStatusReducer from './authStatus'
 
 export default combineReducers({
     display : SideMenuReducer,
     cartState : CartReducer,
     productsState : ProductsReducer,
-    productState : ProductReducer
+    productState : ProductReducer,
+    authState : authStatusReducer
 })

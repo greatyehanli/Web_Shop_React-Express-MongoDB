@@ -1,9 +1,19 @@
+//cores
 import React, { Component } from 'react'
 import MyNavLink from '../MyNavLink/index'
 import axios from "axios"
+
+//redux
+import {connect} from 'react-redux'
+
+//redux action-creater
+import {setAuthStatus} from '../../redux/actions/authStatus'
+
+
+//css
 import "./Login.css"
 
-export default class login extends Component {
+class Login extends Component {
 
     state = {
         password : '',
@@ -29,6 +39,8 @@ export default class login extends Component {
             const {data} = await axios.post('/toBackendServer/to/auth/login', {password, email}, config)
             console.log(data);
             localStorage.setItem("accessToken", data.accessToken)
+
+            this.props.setAuthStatus(true)
 
             history.push('/')
         } catch (error) {
@@ -85,3 +97,13 @@ export default class login extends Component {
         )
     }
 }
+
+
+export default connect(
+    state => ({
+        authState: state.authState
+    }),
+    {
+        setAuthStatus
+    }
+)(Login)
