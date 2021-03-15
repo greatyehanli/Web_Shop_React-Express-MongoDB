@@ -24,7 +24,13 @@ const productSchema = new mongoose.Schema({
         imgURL:{
             type: String,
             required: true
+        },
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Seller'
         }
 })
 
-module.exports = new mongoose.model('product', productSchema)
+const Product = mongoose.model('Product', productSchema)
+module.exports = Product
