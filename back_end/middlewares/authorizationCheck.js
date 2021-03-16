@@ -41,6 +41,7 @@ module.exports.tokenValidation = async(req, res, next) =>{
 
         }
 
+        //used to return the content of the current user who is authed
         req.user = returnedUser
         // console.log('verified, ', returnedUser);
 

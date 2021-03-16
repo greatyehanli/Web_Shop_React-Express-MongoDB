@@ -2,10 +2,10 @@
 import React, { Component } from 'react'
 
 //components
-import OrderedItem from './OrderedItem/OrderedItem'
+import UploadedItem from './UploadedItem/UploadedItem'
 
 //css
-import './Orders.css'
+import './Store.css'
 export default class Orders extends Component {
 
     componentDidMount(){
@@ -16,7 +16,7 @@ export default class Orders extends Component {
         return (
             <div className='order_box'>
                     <div className="box_hd">
-                        <h3>Placed Orders</h3>
+                        <h3>Your Uploaded Products</h3>
                     </div>
                     {/* 参考下下面的代码, 需要先获从DB取user的信息,然后逐个渲染OrderedItem 组件 */}
                     {/* <h2>Cart:</h2>

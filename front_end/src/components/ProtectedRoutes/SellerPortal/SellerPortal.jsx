@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
 //components
-import UserSubNav from './SellerSubNav/SellerSubNav'
+import SellerSubNav from './SellerSubNav/SellerSubNav'
 
-import "./UserPortal.css"
+import "./SellerPortal.css"
 
 export default class UserPortal extends Component {
     render() {
         return (
             <div>
-                <UserSubNav history = {this.props.history}/>
+                <SellerSubNav history = {this.props.history}/>
             </div>
         )
     }

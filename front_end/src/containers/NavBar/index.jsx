@@ -19,6 +19,7 @@ import Login from '../../components/Login/Login'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
 import ForgotPassword from '../../components/ForgotPassword/ForgotPassword'
 import UserPortal from '../../components/ProtectedRoutes/UserPortal/UserPortal'
+import SellerPortal from '../../components/ProtectedRoutes/SellerPortal/SellerPortal'
 //css
 import './index.css'
 
@@ -64,7 +65,11 @@ class NavBar extends Component {
                             </>
                         }
                 
-                        {this.props.authState?
+                        {this.props.authState? localStorage.getItem('accessTokenForSeller') ? 
+                            <li>
+                              <MyNavLink to='/sellerPortal' className='' state={{}}>Profile</MyNavLink>
+                            </li>
+                            :
                             <li>
                                 <MyNavLink to='/userPortal' className='' state={{}}>Profile</MyNavLink>
                             </li> : ''
@@ -102,6 +107,7 @@ class NavBar extends Component {
                         <Route path='/forgotPassword' component={ForgotPassword}></Route>
                         <Route path='/resetPassword/:resetToken' component={ResetPassword}></Route>
                         <Route path='/userPortal' component={UserPortal}></Route>
+                        <Route path='/sellerPortal' component={SellerPortal}></Route>
                         <Route path='/product' component={ProductDetail}></Route>
                         <Route path='/cart' component={Cart}></Route>
                         {/* <Route path='/' component={Home}></Route> */}

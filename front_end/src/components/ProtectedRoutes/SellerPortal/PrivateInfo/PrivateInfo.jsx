@@ -8,7 +8,8 @@ export default class PrivateInfo extends Component {
 
     state = {
         error: '',
-        protectedData: ''        
+        userName: '',
+        email : ''        
     }
 
     componentDidMount(){
@@ -19,17 +20,19 @@ export default class PrivateInfo extends Component {
         const config = {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                Authorization: `Bearer ${localStorage.getItem('accessTokenForSeller')}`
             }
         }
 
         try {
-            const {data} = await axios.get('/toBackendServer/to/protected/', config) 
+            const {data} = await axios.get('/toBackendServer/seller/me', config) 
+            console.log("wowowowowowoowow: ", data);
             this.setState({
-                protectedData: data.data
+                userName: data.name,
+                email: data.email
             })
         } catch (error) {
-            localStorage.removeItem('accessToken')
+            localStorage.removeItem('accessTokenForSeller')
             this.setState({
                 error: "You don't have access to this page"
             })
@@ -38,34 +41,34 @@ export default class PrivateInfo extends Component {
 
     render() {
           
-        const {error, protectedData} = this.state
+        const {error, userName, email} = this.state
         return (
             <div>
 
                 <section className="private_info_bd">
                     <div className="private_hd">
-                        <h3>User Attributes</h3>
+                        <h3>Seller Attributes</h3>
                     </div>
                     
-                    <table className="user_data_table">
+                    <table className="seller_data_table">
                         <tbody>
                             <tr>
                                 <td><u>Username:</u></td>
-                                <td>sample</td>
+                                <td>{userName}</td>
                             </tr>
                 
                             <tr>
                                 <td><u>Email:</u></td>
-                                <td>sample</td>
+                                <td>{email}</td>
                             </tr>
                         </tbody>
                     </table>
                 </section>
 
-                {error?<span>{error}</span> : <>
+                {/* {error?<span>{error}</span> : <>
                     <h1>{protectedData}</h1>
                 </>
-                }
+                } */}
             </div>
         )
     }

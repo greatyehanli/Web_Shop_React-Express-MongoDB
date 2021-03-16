@@ -1,11 +1,21 @@
+//cores
 import React, { Component } from 'react'
 import CartItem from './CartItem'
 import {connect} from 'react-redux'
+import axios from "axios"
+
+//components
 import MyNavLink from '../../components/MyNavLink'
+
+//redux
 import {deleteFromCart, resteCart} from '../../redux/actions/cart'
 import './index.css'
 
 class Cart extends Component {
+
+    state = {
+        error: ''
+    }
 
     getCount = ()=>{
         const {itemsInCart} = this.props.cartState
@@ -25,6 +35,16 @@ class Cart extends Component {
            return total += item.price * item.quantity
         })
         return total
+    }
+
+    placeOrder = async ()=>{
+        const {itemsInCart} = this.props.cartState
+        try {
+            const response = await axios.post('/toBackendServer/to/protected/..............', itemsInCart)
+        } catch (error) {
+            //will use this state attribute to show error message on the page
+            this.setState({error})
+        }
     }
 
     render() {
@@ -51,7 +71,7 @@ class Cart extends Component {
                     </div>
 
                     <div className='checkout_btn_div'>
-                        <button>CheckOut</button>
+                        <button onClick={this.placeOrder}>CheckOut</button>
                     </div>
                 </div>
             </div>

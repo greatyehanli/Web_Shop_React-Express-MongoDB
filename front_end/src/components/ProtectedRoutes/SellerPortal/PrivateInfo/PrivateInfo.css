@@ -16,7 +16,7 @@
     text-align: left;
 }
 
-.user_data_table{
+.seller_data_table{
     width: 100%;
     height: 80%;
     /* table的左右边框取消, 必须要和td同时取消, 要不还会显示, border-collapse只会合并td,
@@ -30,7 +30,7 @@
     text-align: left;
 }
 
-.user_data_table td{
+.seller_data_table td{
     padding-left: 25px;
     border-bottom: 1px solid #E4E4E4;
 }

@@ -5,7 +5,8 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 // components
 import MyNavLink from '../../../MyNavLink'
 import PrivateInfo from '../PrivateInfo/PrivateInfo'
-import Orders from '../Orders/Orders'
+import Store from '../Store/Store'
+
 
 //redux
 import {connect} from 'react-redux'
@@ -14,13 +15,14 @@ import {connect} from 'react-redux'
 import {setAuthStatus} from '../../../../redux/actions/authStatus'
 
 //css
-import './UserSubNav.css'
+import './SellerSubNav.css'
+import Upload from '../Upload/Upload'
 
-class UserPortal extends Component {
+class SellerPortal extends Component {
 
 
     logOut = () =>{
-        localStorage.removeItem('accessToken')
+        localStorage.removeItem('accessTokenForSeller')
         this.props.setAuthStatus(false)
         this.props.history.push('/login')
     }
@@ -31,22 +33,20 @@ class UserPortal extends Component {
             <div className="">
                 <div className="sub_nav">
                     <ul>
-                        <li><MyNavLink to="/userPortal/privateInfo">Private Info</MyNavLink></li>
-                        <li><MyNavLink to="/userPortal/orders">Orders</MyNavLink></li>
+                        <li><MyNavLink to="/sellerPortal/privateInfo">Private Info</MyNavLink></li>
+                        <li><MyNavLink to="/sellerPortal/store">Store</MyNavLink></li>
+                        <li><MyNavLink to="/sellerPortal/upload">Upload</MyNavLink></li>
                         <li><MyNavLink onClick={this.logOut} to="/home">Logout</MyNavLink></li>
                     </ul>
                 </div>
 
                 <Switch>
-                    <Route path='/userPortal/privateInfo' component={PrivateInfo}></Route>
-                    <Route path='/userPortal/orders' component={Orders}></Route>
-                    <Redirect to='/userPortal/privateInfo'></Redirect>
+                    <Route path='/sellerPortal/privateInfo' component={PrivateInfo}></Route>
+                    <Route path='/sellerPortal/store' component={Store}></Route>
+                    <Route path='/sellerPortal/upload' component={Upload}></Route>
+                    <Redirect to='/sellerPortal/privateInfo'></Redirect>
                 </Switch>
-                
             </div>
-
-
-
         )
     }
 }
@@ -58,4 +58,4 @@ export default connect(
     {
         setAuthStatus
     }
-)(UserPortal)
+)(SellerPortal)

@@ -2,7 +2,7 @@ import * as constants from '../constants/product'
 import axios from 'axios'
 
 // 这就是为什么要用async 函数 和thunk
-export const getHotProducts = ()=>{
+export const getHotProducts = ()=>{ 
     return async (dispatch)=>{
         //ajax req, await promise, awaitpromise的try-catch block
         try{ 

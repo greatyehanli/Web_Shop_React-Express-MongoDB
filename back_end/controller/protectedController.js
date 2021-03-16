@@ -1,6 +1,6 @@
-exports.getProtectedResource = (req, res, next) =>{
-    res.status(200).json({
+exports.getPersonalInfo = (req, res, next) =>{
+    return res.json({
         success: true,
-        data: "This is a sample private data"
+        data: req.user
     })
 }

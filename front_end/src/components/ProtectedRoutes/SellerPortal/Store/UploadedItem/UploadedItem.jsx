@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MyNavLink from '../../../../MyNavLink'
 
+import './UploadedItem.css'
+
 class OrderedItem extends Component {
     render() {
         const {id, productName, description, price, numberInStock, imgURL, quantity} = this.props
