@@ -22,6 +22,11 @@
     z-index: 100
 }
 
+/* .container{
+    width: 85%;
+    margin: 1rem auto;
+} */
+
 /* 这个是所有在log下的h2都会被选, 无论h2外侧包的标签是不是和logo隔了多少层标签 */
 .logo h2{
     color: #FFFFFF;

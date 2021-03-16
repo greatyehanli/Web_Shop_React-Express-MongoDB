@@ -1,0 +1,97 @@
+.ordered_item{
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 10px;
+    display: grid;
+    /* orderedItem只有五个格子, 然后分配的宽度占比 */
+    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    /* Syntax: <'row-gap'> <'column-gap'> */
+    gap: 10px;
+    background-color: white;
+    border-radius: 5px;
+    /* The CSS place-items shorthand property sets both the align-items and justify-items properties. 
+        The first value is the align-items property value, the second the justify-items one. 
+        If the second value is not present, the first value is also used for it.
+        Syntax: <'align-items'> <'justify-items'>? */
+    place-items: center;
+    border: white solid 1px;
+    border-radius: 20px;
+}
+
+.item_img{
+    width: 100px ;
+}
+
+.ordered_item_name{
+    /* ordered_item链接 */
+    text-decoration: none;
+    color: black;
+}
+
+.ordered_item_name:hover{
+    color: orange;
+}
+
+#ordered_item_qty{
+    padding: 8px 20px;
+}
+
+.delete_item_in_ordered_btn{
+    padding: 10px 20px;
+    color: red;
+    outline: none;
+    background-color: white;
+    border: 1px solid orange;
+    border-radius: 5px;
+    cursor: pointer;
+    /* 设置transition的方式, 时间, 是不是应用到all properties */
+    transition: all 0.3s ease-out;
+}
+
+.delete_item_in_ordered_btn:hover,
+.delete_item_in_ordered_btn:focus,
+.delete_item_in_ordered_btn:active{
+    background-color: black;
+    /* 开始transform, 变成原来的1.2倍大 */
+    transform: scale(1.2);
+}
+
+@media (max-width: 1000px){
+
+    .ordered_item_name{
+        font-size: 0.7rem;
+    }
+
+    #ordered_item_qty,
+    .delete_item_in_ordered_btn{
+        padding: 10px;
+    }   
+    
+    .ordered_item_price{
+        font-size: 0.7rem;
+    }
+
+    .item_img{
+        width: 80px ;
+    }
+}
+
+@media (max-width: 600px){
+    .ordered_item_name{
+        font-size: 0.7rem;
+    }
+
+    #ordered_item_qty,
+    .delete_item_in_ordered_btn{
+        padding: 10px;
+    }   
+    
+    .ordered_item_price{
+        font-size: 0.7rem;
+    }
+
+    .item_img{
+        width: 70px;
+    }
+}
+

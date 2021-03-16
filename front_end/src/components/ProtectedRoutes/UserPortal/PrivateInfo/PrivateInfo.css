@@ -1,0 +1,36 @@
+.private_info_bd{
+    float: left;
+    margin: 15px 0;
+    margin-left: 35px;
+    
+    width: 900px;
+    height: 205px;
+}
+
+.private_hd{
+    padding-left: 25px;
+    width: 100%;
+    height: 20%;
+    line-height: 46px;
+    background: #20B5CD;
+    text-align: left;
+}
+
+.user_data_table{
+    width: 100%;
+    height: 80%;
+    /* table的左右边框取消, 必须要和td同时取消, 要不还会显示, border-collapse只会合并td,
+     th, table的, 但是假如只设置一项没有左右边框的话, 另外几个会顶上 */
+    border: 1px solid #E4E4E4;
+    border-collapse: collapse;
+
+    border-spacing: 0;
+    /* border-left: none;
+    border-right: none; */
+    text-align: left;
+}
+
+.user_data_table td{
+    padding-left: 25px;
+    border-bottom: 1px solid #E4E4E4;
+}

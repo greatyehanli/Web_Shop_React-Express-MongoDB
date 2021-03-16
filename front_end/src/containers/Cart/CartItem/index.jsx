@@ -13,8 +13,8 @@ class CartItem extends Component {
                     <img src={imgURL} alt="product_img"/>
                 </div>
                 
-                <MyNavLink to='/product' state={{}} className='cart_item_name'>{productName}</MyNavLink>
-
+                <MyNavLink to={{pathname:'/product', state:{id:id}}} className='cart_item_name'>{productName}</MyNavLink>
+                
                 <p className='cart_item_price'>${price}</p>
 
                 <select name="" value={quantity} onChange={event => this.props.saveToCart(id, 1*event.target.value)} id="cart_item_qty">

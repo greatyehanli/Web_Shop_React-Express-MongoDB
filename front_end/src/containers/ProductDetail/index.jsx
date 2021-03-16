@@ -16,8 +16,8 @@ class ProductDetail extends Component {
 
     componentDidMount(){
         //get product info when the page loads
+        console.log(this.props.location);
         this.props.getSpecificProductById(this.props.location.state.id)
-        console.log(this.props.productState);
     }
 
     setQuantity = (event)=>{

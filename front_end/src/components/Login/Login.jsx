@@ -42,7 +42,7 @@ class Login extends Component {
 
             this.props.setAuthStatus(true)
 
-            history.push('/')
+            history.push('/home')
         } catch (error) {
             this.setState({
                 // 这个是axios返回的error, 最后点到的那个error才是我们后端返回的真正自定义的错误

@@ -6,7 +6,6 @@ import './index.css'
 export default class Item extends Component {
     render() {
         const {productName, description, price, imgURL, _id} = this.props
-        console.log(_id);
         return (
             <div className='itemCard'>
                 <img src={imgURL} alt="product_img"/>
@@ -19,7 +18,7 @@ export default class Item extends Component {
                     
                 </div>
                 <div className='btn_wrapper'>
-                        <MyNavLink to={{pathname: '/product', state : {id:_id}}} className='item_view_btn'>Detail</MyNavLink>
+                        <MyNavLink to={{pathname: '/product', state:{id:_id}}} className='item_view_btn'>Detail</MyNavLink>
                     </div>
             </div>
         )

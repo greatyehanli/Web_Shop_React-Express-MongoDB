@@ -1,0 +1,29 @@
+.sub_nav{
+    float: left;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 150px;
+    background-color: #dfdfdf;
+    color: #757575;
+}
+
+.sub_nav a{
+    display: block;
+}
+
+.sub_nav > ul > li{
+    height: 30px;
+    line-height: 20px;
+    padding: 5px 15px;
+    border-left: transparent 3px solid;
+
+}
+
+.sub_nav > ul > li:hover{
+    background: #f1f1f1;
+    border-left: #aFaFaF 3px solid;
+}
+
+.sub_nav > ul > li:hover > a{
+   color: #41D7B4;
+}

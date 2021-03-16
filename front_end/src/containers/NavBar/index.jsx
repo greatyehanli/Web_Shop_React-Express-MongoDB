@@ -18,7 +18,7 @@ import Registration from '../../components/Registration/Registration'
 import Login from '../../components/Login/Login'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
 import ForgotPassword from '../../components/ForgotPassword/ForgotPassword'
-import UserPortal from '../../components/UserPortal/UserPortal'
+import UserPortal from '../../components/ProtectedRoutes/UserPortal/UserPortal'
 //css
 import './index.css'
 
@@ -85,7 +85,7 @@ class NavBar extends Component {
                     </ul>
 
 
-                    {/* navbar里面全部flex, div是在navbar class的管辖下 */}
+                    {/* 手动创建menu icon navbar里面全部flex, div是在navbar class的管辖下 */}
                     <div className='side_menu_icon' onClick={this.toggleSideMenuDisplay}>
                         <div></div>
                         <div></div>
@@ -93,19 +93,21 @@ class NavBar extends Component {
                     </div>        
 
                 </nav>
-                {/* mapping to state in child componet's props.location */}
-                <Switch>
-                    <Route path='/home' component={Home}></Route>
-                    <Route path='/login' component={Login}></Route>
-                    <Route path='/signUp' component={Registration}></Route>
-                    <Route path='/forgotPassword' component={ForgotPassword}></Route>
-                    <Route path='/resetPassword/:resetToken' component={ResetPassword}></Route>
-                    <Route path='/userPortal' component={UserPortal}></Route>
-                    <Route path='/product' component={ProductDetail}></Route>
-                    <Route path='/cart' component={Cart}></Route>
-                    {/* <Route path='/' component={Home}></Route> */}
-                    <Redirect to='/' ></Redirect>
-                </Switch>
+                <div className = ''>
+                    {/* mapping to state in child componet's props.location */}
+                    <Switch>
+                        <Route path='/home' component={Home}></Route>
+                        <Route path='/login' component={Login}></Route>
+                        <Route path='/signUp' component={Registration}></Route>
+                        <Route path='/forgotPassword' component={ForgotPassword}></Route>
+                        <Route path='/resetPassword/:resetToken' component={ResetPassword}></Route>
+                        <Route path='/userPortal' component={UserPortal}></Route>
+                        <Route path='/product' component={ProductDetail}></Route>
+                        <Route path='/cart' component={Cart}></Route>
+                        {/* <Route path='/' component={Home}></Route> */}
+                        <Redirect to='/home' ></Redirect>
+                    </Switch>
+                </div>
             </div>
 
         )
