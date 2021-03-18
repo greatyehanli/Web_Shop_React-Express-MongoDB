@@ -65,7 +65,7 @@ export default class ForgotPassword extends Component {
                                 /> </li>
 
                             <li>
-                                <input type="submit" value="Login" className="btn"/>
+                                <input type="submit" value="Send" className="btn"/>
                             </li>
                         </ul>
                     </form>

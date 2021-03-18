@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
-import MyNavLink from '../MyNavLink/index'
 import axios from "axios"
+
+//components
+import MyNavLink from '../MyNavLink/index'
+
+//redux
+import {connect} from 'react-redux'
+
+//redux action-creater
+import {setAuthStatus} from '../../redux/actions/authStatus'
+
 import "./Registration.css"
 
-export default class Registration extends Component {
+class Registration extends Component {
 
     state = {
         username: '',
@@ -15,6 +24,8 @@ export default class Registration extends Component {
 
     submitionHandler = async (event) =>{
         event.preventDefault()
+        const isSeller = event.target.isSeller.checked
+
         const {username, password, confirmPassword, email} = this.state
         const {history} = this.props
         const config = {
@@ -22,25 +33,43 @@ export default class Registration extends Component {
                 "Content-Type": "application/json"
             }
         }
+        console.log('没有password????: ', password, confirmPassword);
 
         if(password !== confirmPassword){
+            /*
+            这个定时器会产生这个warning, 但是不影响使用
+            index.js:1 Warning: Can't perform a React state update on an unmounted component. 
+            This is a no-op, but it indicates a memory leak in your application. 
+            To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+            */ 
             setTimeout(()=>{
                 this.setState({
                     error:''
                 })
-            }, 6000)
+            }, 3000)
 
             this.setState({
                 password : '',
                 confirmPassword: '',
                 error: 'Passwords not matching each other'
-            })
+            }) 
         }
 
         try {
-            const {data} = await axios.post('/toBackendServer/to/auth/register', {username, password, email}, config)
+            if(!isSeller){
+                var {data} = await axios.post('/toBackendServer/to/auth/register', {username, password, email}, config)
+            }else{
+                var {data} = await axios.post('/toBackendServer/seller', {name: username, password, email}, config)
+            }
 
-            localStorage.setItem("accessToken", data.accessToken)
+            if(isSeller){
+                localStorage.setItem("accessTokenForSeller", data.token)
+                history.push('/sellerPortal/privateInfo')
+            }else{
+                localStorage.setItem("accessToken", data.accessToken)
+                history.push('/userPortal/privateInfo')
+            }
+            this.props.setAuthStatus(true)
 
             history.push('/')
         } catch (error) {
@@ -97,8 +126,8 @@ export default class Registration extends Component {
                                 onChange={(event)=>this.setState({email: event.target.value})}
                                 /> </li>
 
-                            <li className="agree"><input type="checkbox" name="agreement"/> 
-                                &nbsp; Agree and Register: <a href="#"> &nbsp; Agreements </a>
+                            <li className="agree"><input type="checkbox" name="isSeller"/> 
+                                &nbsp; Register as Seller
                             </li>
 
                             <li>
@@ -111,3 +140,12 @@ export default class Registration extends Component {
         )
     }
 }
+
+export default connect(
+    state =>({
+        authState: state.authState
+    }),
+    {
+        setAuthStatus
+    }
+)(Registration)
