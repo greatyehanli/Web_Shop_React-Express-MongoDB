@@ -20,6 +20,7 @@ import ResetPassword from '../../components/ResetPassword/ResetPassword'
 import ForgotPassword from '../../components/ForgotPassword/ForgotPassword'
 import UserPortal from '../../components/ProtectedRoutes/UserPortal/UserPortal'
 import SellerPortal from '../../components/ProtectedRoutes/SellerPortal/SellerPortal'
+import ChatRoom from '../../components/ProtectedRoutes/ChatRoom/ChatRoom'
 //css
 import './index.css'
 
@@ -109,6 +110,7 @@ class NavBar extends Component {
                         <Route path='/userPortal' component={UserPortal}></Route>
                         <Route path='/sellerPortal' component={SellerPortal}></Route>
                         <Route path='/product' component={ProductDetail}></Route>
+                        <Route path='/chatRoom' component={ChatRoom}></Route>
                         <Route path='/cart' component={Cart}></Route>
                         {/* <Route path='/' component={Home}></Route> */}
                         <Redirect to='/home' ></Redirect>

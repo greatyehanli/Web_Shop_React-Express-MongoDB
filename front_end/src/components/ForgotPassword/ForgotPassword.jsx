@@ -24,7 +24,7 @@ export default class ForgotPassword extends Component {
 
         try {
             const {data} = await axios.post('/toBackendServer/to/auth/forgotPassword', {email}, config)
-
+            
             this.setState({
                 success: data.data
             })

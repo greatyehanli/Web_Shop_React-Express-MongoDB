@@ -48,7 +48,8 @@ class ProductDetail extends Component {
                                 <p className='product_desciption'>
                                 {description}
                                 </p>
-                                <p className='product_price'>${price}</p>
+                                <p className='product_price'>${price}</p> 
+                                <p className=''> <MyNavLink to='/chatRoom' className='chatBtn'>Join&Chat</MyNavLink> </p> 
                             </div>
                         </div>
                         

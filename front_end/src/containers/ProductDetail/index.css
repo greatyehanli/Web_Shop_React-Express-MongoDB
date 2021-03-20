@@ -44,6 +44,13 @@
     border-top: 1px solid black;
 }
 
+
+.chatBtn{
+    color: #c81832;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .detail_right_part{
     display: flex;
     flex-direction: column;
