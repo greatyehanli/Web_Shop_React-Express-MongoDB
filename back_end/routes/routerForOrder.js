@@ -18,6 +18,7 @@ router.get('/order', tokenValidation, async (req, res) => {
 })
 
 router.post('/order', tokenValidation, async (req, res) => {
+    console.log('req.body+++++', req.body);
     if (req.body.orderItems.length === 0) {
         res.status(400).send({ message: 'Cart is empty' });
     } else {

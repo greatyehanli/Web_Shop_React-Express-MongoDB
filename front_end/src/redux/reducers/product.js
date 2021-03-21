@@ -13,7 +13,7 @@ export default function ProductReducer(preState=initState, action){
             };
 
         case constants.GET_PRODUCT_DETAIL_SUCCESS:
-            console.log("我在product的reducer报告: ", data);
+            // console.log("我在product的reducer报告: ", data);
             return{
                 isLoading: false,
                 productObj: data

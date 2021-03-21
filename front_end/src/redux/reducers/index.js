@@ -6,11 +6,13 @@ import ProductsReducer from './products'
 import ProductReducer from './product'
 import CartReducer from './cart'
 import authStatusReducer from './authStatus'
+import reloadOrderState from './reloadOrder'
 
 export default combineReducers({
     display : SideMenuReducer,
     cartState : CartReducer,
     productsState : ProductsReducer,
     productState : ProductReducer,
-    authState : authStatusReducer
+    authState : authStatusReducer,
+    reloadOrderState : reloadOrderState
 })

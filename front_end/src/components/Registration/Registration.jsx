@@ -33,7 +33,6 @@ class Registration extends Component {
                 "Content-Type": "application/json"
             }
         }
-        console.log('没有password????: ', password, confirmPassword);
 
         if(password !== confirmPassword){
             /*
@@ -57,8 +56,13 @@ class Registration extends Component {
 
         try {
             if(!isSeller){
+                // console.log('Not selle: ', username, password, email);
+
                 var {data} = await axios.post('/toBackendServer/to/auth/register', {username, password, email}, config)
             }else{
+                // console.log('Not User: ', username, password, email);
+
+
                 var {data} = await axios.post('/toBackendServer/seller', {name: username, password, email}, config)
             }
 

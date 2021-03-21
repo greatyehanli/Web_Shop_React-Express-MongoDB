@@ -1,5 +1,6 @@
 .order_box{
     float: left;
+    grid-template-columns: 1fr;
     margin: 15px 0;
     margin-left: 35px;
     

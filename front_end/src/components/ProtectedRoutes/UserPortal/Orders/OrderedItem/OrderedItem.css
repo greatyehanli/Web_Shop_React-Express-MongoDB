@@ -4,7 +4,7 @@
     margin-bottom: 10px;
     display: grid;
     /* orderedItem只有五个格子, 然后分配的宽度占比 */
-    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     /* Syntax: <'row-gap'> <'column-gap'> */
     gap: 10px;
     background-color: white;
@@ -34,6 +34,11 @@
 
 #ordered_item_qty{
     padding: 8px 20px;
+}
+
+.delete_order_btn{
+    float: right;
+    margin-right: 30px;
 }
 
 .delete_item_in_ordered_btn{

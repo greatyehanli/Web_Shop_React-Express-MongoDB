@@ -1,7 +1,8 @@
 import * as constants from '../constants/cart'
 import axios from 'axios'
+import {getSpecificProductById} from '../../redux/actions/product'
 
-export const saveToCart= (id, quantity)=>{
+export const saveToCart= (id, qty)=>{
  
     console.log("Save_toCart id: ", id);
 
@@ -16,18 +17,23 @@ export const saveToCart= (id, quantity)=>{
 
         // console.log("Save_toCart response: ", response);
 
+        const {data} = await await axios({
+            method: 'GET',
+            url: `/toBackendServer/to/product/${response.data._id}`
+        })
 
         const actionData = {
             type: constants.SAVE_TO_CART,
             data: {
                 id: response.data._id,
-                productName: response.data.productName,
+                product: data,
+                name: response.data.productName,
                 description: response.data.description,
                 price: response.data.price,
                 numberInStock: response.data.numberInStock,
-                imgURL: response.data.imgURL,
+                image: response.data.imgURL,
                 // 这个quantity不是db里的, 是我们存在页面的
-                quantity
+                qty
             }
         }
 

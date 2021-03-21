@@ -30,30 +30,30 @@ const orderSchema = new mongoose.Schema(
     shippingAddress: {
       fullName: { 
           type: String, 
-          required: true 
+          required: false 
         },
       address: { 
           type: String, 
-          required: true 
+          required: false 
         },
       city: { 
           type: String, 
-          required: true 
+          required: false 
         },
       postalCode: { 
           type: String, 
-          required: true 
+          required: false 
         },
       country: { 
           type: String, 
-          required: true 
+          required: false 
         },
       lat: Number,
       lng: Number,
     },
     paymentMethod: { 
         type: String, 
-        required: true 
+        required: false 
     },
     paymentResult: {
       id: String,
@@ -63,15 +63,15 @@ const orderSchema = new mongoose.Schema(
     },
     itemsPrice: { 
         type: Number, 
-        required: true 
+        required: false 
     },
     shippingPrice: { 
         type: Number, 
-        required: true 
+        required: false 
     },
     taxPrice: { 
         type: Number, 
-        required: true 
+        required: false 
     },
     totalPrice: { 
         type: Number, 

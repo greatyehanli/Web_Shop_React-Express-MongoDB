@@ -7,8 +7,10 @@ import axios from "axios"
 //components
 import MyNavLink from '../../components/MyNavLink'
 
+
 //redux
 import {deleteFromCart, resteCart} from '../../redux/actions/cart'
+import {getSpecificProductById} from '../../redux/actions/product'
 import './index.css'
 
 class Cart extends Component {
@@ -21,8 +23,8 @@ class Cart extends Component {
         const {itemsInCart} = this.props.cartState
         var total = 0
         itemsInCart.forEach(item => {
-            console.log("item.quantity: ",typeof (total+item.quantity), item.quantity, (total+item.quantity));
-           return total+=item.quantity
+            console.log("item.quantity: ",typeof (total+item.qty), item.qty, (total+item.qty));
+           return total+=item.qty
         })
         return total
     }
@@ -31,17 +33,29 @@ class Cart extends Component {
         const {itemsInCart} = this.props.cartState
         var total = 0
         itemsInCart.forEach(item => {
-            console.log("item.quantity: ",typeof (total+item.quantity), item.quantity, (total+item.quantity));
-           return total += item.price * item.quantity
+            console.log("item.quantity: ",typeof (total+item.qty), item.qty, (total+item.qty));
+           return total += item.price * item.qty
         })
         return total
     }
 
     placeOrder = async ()=>{
         const {itemsInCart} = this.props.cartState
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }
+
         try {
-            const response = await axios.post('/toBackendServer/to/protected/..............', itemsInCart)
-        } catch (error) {
+            // console.log(itemsInCart);
+            const totalPrice = this.getTotalPrice()
+
+            const response = await axios.post('/toBackendServer/order', { orderItems: itemsInCart, totalPrice: totalPrice}, config)
+            this.props.history.push('/userPortal/orders')
+            // console.log(response);
+        } catch (error) { 
             //will use this state attribute to show error message on the page
             this.setState({error})
         }
@@ -81,11 +95,13 @@ class Cart extends Component {
 
 export default connect(state=>
     ({
-        cartState: state.cartState
+        cartState: state.cartState,
+        productDetailState : state.productState
     }),
     {
         deleteFromCart,
-        resteCart
+        resteCart,
+        getSpecificProductById
     }
     
 )(Cart)

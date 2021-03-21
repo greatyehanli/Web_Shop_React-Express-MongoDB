@@ -54,7 +54,7 @@ class NavBar extends Component {
                             <MyNavLink to='/home' className='' state={{}}>Home</MyNavLink>
                         </li>
 
-                        {this.props.authState? '' :    
+                        {localStorage.getItem('accessTokenForSeller')||localStorage.getItem('accessToken')? '' :    
                             <>       
                                 <li>
                                     <MyNavLink to='/login' className='' state={{}}>Login</MyNavLink>
@@ -66,7 +66,7 @@ class NavBar extends Component {
                             </>
                         }
                 
-                        {this.props.authState? localStorage.getItem('accessTokenForSeller') ? 
+                        {localStorage.getItem('accessTokenForSeller')||localStorage.getItem('accessToken')? localStorage.getItem('accessTokenForSeller') ? 
                             <li>
                               <MyNavLink to='/sellerPortal' className='' state={{}}>Profile</MyNavLink>
                             </li>

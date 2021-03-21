@@ -72,8 +72,7 @@ io.on('connection', (socket)=>{
     socket.on('disconnect', ()=>{
         //我们其实只是让socket的id分给了user当id而已
         const deletedUser = removeUser(socket.id) //splice成功的话肯定会返回个true的值
-        console.log("deletedUser<<<<<:", deletedUser);
-
+        
         if(deletedUser){
             io.to(deletedUser.room).emit('message', {user:'admin', text: `${deletedUser.name} has left room`})
         }
