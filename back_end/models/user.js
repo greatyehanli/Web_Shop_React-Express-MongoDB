@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
+const Order = require('../models/order')
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -31,6 +32,12 @@ const userSchema = new mongoose.Schema({
     // token为String, expire的值为一个Date形式的值
     ResetToken: String,
     resetTokenExpiringTime: Date
+})
+
+userSchema.virtual('orders',{
+    ref: 'Order',
+    localField:'_id',
+    foreignField:'user'
 })
 
 //所有和userSchema相关的预操作行为都会触发这个pre中间件, 用model触发也是schema相关的, 都联系着
@@ -63,7 +70,7 @@ userSchema.methods.generateAccessToken = function(){
     //payload, private key, 
     return jwt.sign({
         // 这个_id是存到mongoDB之后自动分的一个id
-        id: this._id,
+        _id: this._id.toString()
         // 这个env在server里面require过了, 被调用的时候可以使用server外scope的env
     }, process.env.JWT_PRIVATE_KEY, {
         // 这个里面定义的是JWT的signOption, 选项是固定的, 比如expiresIn是预先定义好的名字, 不能改
@@ -88,6 +95,12 @@ userSchema.methods.generateResetToken = function(){
     //return的是没有hash的token
     return token
 }
+userSchema.pre('remove', async function (next){
+    const user = this
+    await Order.deleteMany({user: user._id})
 
+    next()
+})
 
-module.exports = new mongoose.model('user', userSchema)
+const User = mongoose.model('user', userSchema)
+module.exports =  User;

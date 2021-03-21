@@ -33,7 +33,7 @@ module.exports.tokenValidation = async(req, res, next) =>{
         // console.log('verifying');
 
         //search through user collection to check if 有这个id的user是不是真的存在
-        const returnedUser = await User.findById(decryption.id)
+        const returnedUser = await User.findById({_id: decryption._id})
 
         if(!returnedUser){
             return next(new errorPrototype("This id doesn't have a corresponding user that matches it", 401))

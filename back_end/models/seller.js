@@ -47,6 +47,11 @@ sellerSchema.virtual('products',{
     localField:'_id',
     foreignField:'owner'
 })
+sellerSchema.virtual('orders',{
+    ref: 'Order',
+    localField:'_id',
+    foreignField:'seller'
+})
 sellerSchema.methods.toJSON = function (){
     const seller = this
     const sellerObject = seller.toObject()

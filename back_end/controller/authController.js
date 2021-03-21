@@ -7,7 +7,7 @@ const sendEmail = require('../utils/emailer')
 const crypto = require('crypto')
 
 module.exports.register = async (req, res, next) =>{
-    const {email, username, password} = req.body
+    const {email, username, password} = new User(req.body)
 
     try {
         //create的时候

@@ -11,6 +11,7 @@ const authRouter = require('./routes/routerForAuth')
 const protectedRouter = require('./routes/routerForProtected')
 const sellerRouter = require('./routes/routerSeller')
 const chatRouter = require('./routes/routerForChatting.js')
+const orderRouter = require('./routes/routerForOrder')
 const errorHandler = require('./middlewares/error')
 
 const {addUser, removeUser, getUsersInRoom, getUser} = require('./utils/userForChatting')
@@ -33,6 +34,7 @@ app.use('/to/chat', chatRouter)
 app.use('/to/auth', authRouter)
 app.use('/to/protected', protectedRouter)
 app.use(sellerRouter)
+app.use(orderRouter)
 // errorHandler should be put at the very end of all middlewares, 
 //不然request在进入相应的route之前, 没错也会被返回个500就很伤
 app.use(errorHandler)
