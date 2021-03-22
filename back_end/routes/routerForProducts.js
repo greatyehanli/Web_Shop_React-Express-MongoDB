@@ -28,21 +28,13 @@ router.get('/',(req, res)=>{
 //这个函数本来接的参数就是req和res, 我们可以直接当回调用, 上面的方法的简化
 router.get('/:id',getProductById)
 
-// Get Product by Id (Only by authorized seller)
-router.get('/product/:id/seller', auth ,async (req, res) => {
-    const _id = req.params.id;
-
+// Get all the products by seller ID (only by authorized seller)
+router.get('/product/me/:id', auth ,async (req, res) => {
     try{
-        await Product.findOne({_id, owner: req.seller._id}, (err, returnedProduct)=>{
-            if(err){
-                console.log(err);
-            }else{
-                res.json(returnedProduct)
-            }
-       })
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({message: 'Server Error'})
+        const seller = await Product.find({owner: req.seller._id})
+        res.status(404).send(seller)
+    }catch(e){
+        res.status(500).send(e);
     }
 })
 
